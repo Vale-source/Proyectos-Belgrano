@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Aroma - Cafetería & Pastelería</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Mis estilos -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Barra de navegacion con menu hamburguesa -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <!-- Logo o nombre de la cafeteria -->
+            <a class="navbar-brand fw-bold" href="#">☕ Café Aroma</a>
+
+            <!-- Boton hamburguesa para celulares -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuHamburguesa"
+                aria-controls="menuHamburguesa" aria-expanded="false" aria-label="Abrir menú">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links del menu -->
+            <div class="collapse navbar-collapse" id="menuHamburguesa">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#especialidades">Especialidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nosotros">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+
+                <!-- Boton para abrir la ventana modal -->
+                <div class="text-center ms-lg-3 my-2 my-lg-0">
+                    <button type="button" class="btn btn-warning fw-semibold" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+                        🎉 Ver Promo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Carrusel de imagenes -->
+    <section id="inicio">
+        <div id="carruselAroma" class="carousel slide" data-bs-ride="carousel">
+
+            <!-- Puntitos de abajo para saber en que foto estamos -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carruselAroma" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Foto 1"></button>
+                <button type="button" data-bs-target="#carruselAroma" data-bs-slide-to="1" aria-label="Foto 2"></button>
+                <button type="button" data-bs-target="#carruselAroma" data-bs-slide-to="2" aria-label="Foto 3"></button>
+            </div>
+
+            <!-- Fotos y textos del carrusel -->
+            <div class="carousel-inner">
+                <!-- Foto 1 -->
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80"
+                        class="d-block w-100 imagen-carrusel" alt="Café recién servido">
+                    <div class="carousel-caption d-block fondo-caption rounded p-2">
+                        <h5>El mejor café de especialidad</h5>
+                        <p class="d-none d-sm-block">Granos seleccionados y tostados a la perfección.</p>
+                    </div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80"
+                        class="d-block w-100 imagen-carrusel" alt="Pastelería recién horneada">
+                    <div class="carousel-caption d-block fondo-caption rounded p-2">
+                        <h5>Pastelería artesanal</h5>
+                        <p class="d-none d-sm-block">Medialunas y tortas horneadas todas las mañanas.</p>
+                    </div>
+                </div>
+
+                <!-- Foto 3 -->
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80"
+                        class="d-block w-100 imagen-carrusel" alt="Local de la cafetería">
+                    <div class="carousel-caption d-block fondo-caption rounded p-2">
+                        <h5>Un espacio para vos</h5>
+                        <p class="d-none d-sm-block">Vení a estudiar, trabajar o compartir una buena charla.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boton anterior -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carruselAroma" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+
+            <!-- Boton siguiente -->
+            <button class="carousel-control-next" type="button" data-bs-target="#carruselAroma" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Seccion de productos -->
+    <main class="container my-5" id="especialidades">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-dark">Nuestras Especialidades</h2>
+            <p class="text-muted">Conocé lo que más piden nuestros clientes</p>
+        </div>
+
+        <!-- Tarjetas de productos (1 columna en celular, 3 en compu) -->
+        <div class="row g-4">
+
+            <!-- Tarjeta 1: Cafe -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top imagen-tarjeta" alt="Café Latte">
+                    <div class="card-body d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Café Latte Art</h5>
+                        <p class="card-text text-secondary">Doble shot de espresso con leche texturizada y diseño especial.</p>
+                        <p class="fw-bold text-success fs-5 mt-auto">$2.800</p>
+                        <button class="btn btn-outline-dark mt-2" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+                            Ver Descuento
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Medialunas -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top imagen-tarjeta" alt="Medialunas">
+                    <div class="card-body d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Medialunas Rellenas</h5>
+                        <p class="card-text text-secondary">Medialunas calentitas rellenas con dulce de leche o crema pastelera.</p>
+                        <p class="fw-bold text-success fs-5 mt-auto">$1.900</p>
+                        <button class="btn btn-outline-dark mt-2" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+                            Ver Descuento
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Tostada -->
+            <div class="col-12 col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=600&q=80"
+                        class="card-img-top imagen-tarjeta" alt="Tostón de palta">
+                    <div class="card-body d-flex flex-column text-center">
+                        <h5 class="card-title fw-bold">Brunch Tostón</h5>
+                        <p class="card-text text-secondary">Pan de masa madre tostado, palta fresca, semillas y huevo poché.</p>
+                        <p class="fw-bold text-success fs-5 mt-auto">$3.600</p>
+                        <button class="btn btn-outline-dark mt-2" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+                            Ver Descuento
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Seccion sobre la cafeteria -->
+    <section class="bg-light py-5" id="nosotros">
+        <div class="container text-center">
+            <div class="col-12 col-md-8 mx-auto">
+                <h3 class="fw-bold">Pasión por el Buen Café</h3>
+                <p class="text-secondary mt-3">
+                    En <strong>Café Aroma</strong> preparamos cada taza con granos de origen seleccionados.
+                    Nos encanta ofrecer un ambiente cálido para que disfrutes tu momento del día, con buena música,
+                    Wi-Fi rápido y la mejor pastelería casera.
+                </p>
+                <!-- Boton que tambien abre la ventana modal -->
+                <button type="button" class="btn btn-primary btn-lg mt-2" data-bs-toggle="modal" data-bs-target="#modalPromocion">
+                    🎁 ¡Conocé la Promo Semanal!
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cuadro modal con la promocion -->
+    <div class="modal fade" id="modalPromocion" tabindex="-1" aria-labelledby="modalPromocionLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <!-- Titulo del modal y boton para cerrar con la cruz -->
+                <div class="modal-header bg-warning">
+                    <h5 class="modal-title fw-bold text-dark" id="modalPromocionLabel">
+                        ☕ ¡Promoción Exclusiva del Día!
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+
+                <!-- Contenido del modal -->
+                <div class="modal-body text-center p-4">
+                    <span class="fs-1">🥐☕</span>
+                    <h4 class="fw-bold mt-2 text-primary">2x1 en Café de Especialidad</h4>
+                    <p class="text-secondary mb-3">
+                        Lunes a Viernes de 8:00 a 11:00 hs pidiendo cualquier café mediano o grande.
+                    </p>
+
+                    <!-- Codigo de descuento -->
+                    <div class="border border-2 border-dashed p-3 rounded bg-light mb-3">
+                        <p class="mb-1 text-muted small">Mostrá este código al mozo o en la caja:</p>
+                        <span class="badge bg-dark fs-5">AROMA-2X1</span>
+                    </div>
+
+                    <p class="small text-muted mb-0">* Válido para consumo en el local o para llevar.</p>
+                </div>
+
+                <!-- Botones de abajo para cerrar -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Cerrar
+                    </button>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                        ¡Entendido, gracias!
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de pagina -->
+    <footer class="bg-dark text-white py-4" id="contacto">
+        <div class="container text-center">
+            <h5 class="fw-bold">☕ Café Aroma</h5>
+            <p class="mb-1 text-secondary">Av. San Martín 1250, Mendoza, Argentina</p>
+            <p class="mb-2 text-secondary">Horarios: Lunes a Sábados de 07:30 a 20:30 hs</p>
+            <hr class="my-3 border-secondary">
+            <p class="small text-muted mb-0">
+                &copy; 2026 Café Aroma - Prácticas Profesionales 1
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS para que funcione el menu desplegable, el carrusel y el modal -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

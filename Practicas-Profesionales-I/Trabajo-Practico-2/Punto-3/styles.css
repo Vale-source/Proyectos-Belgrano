@@ -1,0 +1,56 @@
+/* Estilos personalizados para Café Aroma */
+
+/* Desplazamiento suave al tocar los links del menu */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Tipografia y color de fondo de la pagina */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #faf8f5;
+    color: #333333;
+}
+
+/* Alto de las fotos del carrusel para que queden parejas y no se deformen */
+.imagen-carrusel {
+    height: 420px;
+    object-fit: cover;
+}
+
+/* En celulares achicamos un poco el carrusel */
+@media (max-width: 576px) {
+    .imagen-carrusel {
+        height: 260px;
+    }
+}
+
+/* Fondo oscuro transparente para leer bien el texto sobre la foto */
+.fondo-caption {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+/* Alto de las imagenes de las tarjetas */
+.imagen-tarjeta {
+    height: 210px;
+    object-fit: cover;
+}
+
+/* Animacion simple al pasar el mouse por la tarjeta */
+.card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Bordes redondeados del modal */
+.modal-content {
+    border-radius: 14px;
+    overflow: hidden;
+}
