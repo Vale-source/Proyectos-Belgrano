@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estilos - Aura Studio Creativo</title>
+
+    <!-- Fuente de Google Fonts para mejorar la tipografia -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Encabezado de la guia de estilos -->
+    <header class="cabecera">
+        <div class="contenedor">
+            <span class="etiqueta-tema">Temática: Estudio de Diseño & Estética Visual</span>
+            <h1 class="titulo-principal">Guía de Estilos "Aura Studio"</h1>
+            <p class="descripcion-cabecera">
+                Documento de identidad visual con paleta de colores, tipografías y componentes interactivos hechos con HTML5 y CSS puro.
+            </p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+
+        <!-- 1. Paleta de colores -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">1. Paleta de Colores</h2>
+            <p class="texto-explicativo">Colores seleccionados para transmitir creatividad, suavidad y diseño moderno.</p>
+
+            <div class="grilla-colores">
+                <!-- Color 1: Violeta principal -->
+                <div class="caja-color">
+                    <div class="muestra-color color-primario"></div>
+                    <div class="info-color">
+                        <strong>Lavanda Aura</strong>
+                        <span>#7c5cfc</span>
+                    </div>
+                </div>
+
+                <!-- Color 2: Rosa coral -->
+                <div class="caja-color">
+                    <div class="muestra-color color-secundario"></div>
+                    <div class="info-color">
+                        <strong>Rosa Pastel</strong>
+                        <span>#ff6b8b</span>
+                    </div>
+                </div>
+
+                <!-- Color 3: Celeste agua -->
+                <div class="caja-color">
+                    <div class="muestra-color color-acento"></div>
+                    <div class="info-color">
+                        <strong>Turquesa Suave</strong>
+                        <span>#48dbfb</span>
+                    </div>
+                </div>
+
+                <!-- Color 4: Fondo oscuro -->
+                <div class="caja-color">
+                    <div class="muestra-color color-oscuro"></div>
+                    <div class="info-color">
+                        <strong>Gris Carbón</strong>
+                        <span>#2d3436</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Tipografias -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">2. Tipografías</h2>
+            <p class="texto-explicativo">Usamos la fuente Poppins para lograr legibilidad y presencia estética.</p>
+
+            <div class="caja-componente">
+                <h1 class="ejemplo-h1">Título Grande (H1 - 28px Bold)</h1>
+                <h2 class="ejemplo-h2">Título Mediano (H2 - 22px SemiBold)</h2>
+                <h3 class="ejemplo-h3">Título Menor (H3 - 18px Regular)</h3>
+                <p class="ejemplo-parrafo">
+                    Este es un párrafo de texto normal para lectura. El espaciado entre líneas es amplio para que no canse la vista y se sienta liviano.
+                </p>
+            </div>
+        </section>
+
+        <!-- 3. Botones con efecto 3D -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">3. Botones con Efecto 3D</h2>
+            <p class="texto-explicativo">Tienen relieve en la parte inferior y al hacer clic se hunden dando la sensación de volumen.</p>
+
+            <div class="caja-componente fila-elementos">
+                <!-- Boton 3D primario -->
+                <button type="button" class="btn-3d btn-3d-primario">
+                    Boton 3D Primario
+                </button>
+
+                <!-- Boton 3D secundario -->
+                <button type="button" class="btn-3d btn-3d-secundario">
+                    Boton 3D Secundario
+                </button>
+
+                <!-- Boton 3D turquesa -->
+                <button type="button" class="btn-3d btn-3d-acento">
+                    Boton 3D Turquesa
+                </button>
+            </div>
+        </section>
+
+        <!-- 4. Enlaces animados con cambio de color -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">4. Enlaces Animados con Cambio de Color</h2>
+            <p class="texto-explicativo">Pasa el cursor por encima para ver la animación suave de color y fondo.</p>
+
+            <div class="caja-componente fila-elementos">
+                <!-- Enlace 1: Cambia de color y se mueve un poco -->
+                <a href="#enlaces" class="link-animado link-color-1">
+                    Ver Portafolio Creativo →
+                </a>
+
+                <!-- Enlace 2: Con fondo interactivo -->
+                <a href="#enlaces" class="link-animado link-color-2">
+                    Conocer Nuestro Equipo →
+                </a>
+
+                <!-- Enlace 3: Borde que se rellena -->
+                <a href="#enlaces" class="link-animado link-color-3">
+                    Descargar Guía Completa →
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. Campos de formulario con foco resaltado -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">5. Campos de Formulario con Foco Resaltado</h2>
+            <p class="texto-explicativo">Haz clic dentro de cada campo para ver cómo el borde cambia de color y genera un resplandor.</p>
+
+            <div class="caja-componente">
+                <form class="formulario-estilo" action="#" method="get">
+                    <!-- Campo nombre -->
+                    <div class="grupo-campo">
+                        <label for="nombre" class="etiqueta-campo">Nombre del Proyecto:</label>
+                        <input type="text" id="nombre" class="campo-input" placeholder="Ej: Branding Studio 2026">
+                    </div>
+
+                    <!-- Campo correo -->
+                    <div class="grupo-campo">
+                        <label for="correo" class="etiqueta-campo">Correo Electrónico:</label>
+                        <input type="email" id="correo" class="campo-input" placeholder="contacto@aurastudio.com">
+                    </div>
+
+                    <!-- Campo seleccion -->
+                    <div class="grupo-campo">
+                        <label for="categoria" class="etiqueta-campo">Categoría de Diseño:</label>
+                        <select id="categoria" class="campo-input">
+                            <option value="">Seleccione una categoría</option>
+                            <option value="identidad">Identidad de Marca</option>
+                            <option value="web">Diseño Web & UI</option>
+                            <option value="editorial">Diseño Editorial</option>
+                        </select>
+                    </div>
+
+                    <!-- Campo mensaje -->
+                    <div class="grupo-campo">
+                        <label for="mensaje" class="etiqueta-campo">Notas adicionales:</label>
+                        <textarea id="mensaje" rows="3" class="campo-input" placeholder="Escribe aquí los detalles..."></textarea>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 6. Acordeon de textos hecho con HTML5 (sin JavaScript) -->
+        <section class="seccion-guia">
+            <h2 class="subtitulo-seccion">6. Acordeón de Textos</h2>
+            <p class="texto-explicativo">Hecho con las etiquetas nativas &lt;details&gt; y &lt;summary&gt; de HTML5, sin usar JavaScript.</p>
+
+            <div class="caja-componente">
+                <!-- Item 1 del acordeon -->
+                <details class="acordeon-item" open>
+                    <summary class="acordeon-titulo">¿Qué es una guía de estilo visual?</summary>
+                    <div class="acordeon-contenido">
+                        <p>
+                            Una guía de estilo es un documento que reúne las reglas gráficas de una marca o sitio web: define los colores exactos, los tipos de letras, el diseño de botones y los efectos visuales para que todo el proyecto se vea ordenado y coherente.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 2 del acordeon -->
+                <details class="acordeon-item">
+                    <summary class="acordeon-titulo">¿Por qué priorizamos la estética en este diseño?</summary>
+                    <div class="acordeon-contenido">
+                        <p>
+                            Porque el objetivo es impactar visualmente al usuario con una composición armónica, bordes redondeados, sombras suaves y contrastes agradables en lugar de crear un panel administrativo o funciones pesadas.
+                        </p>
+                    </div>
+                </details>
+
+                <!-- Item 3 del acordeon -->
+                <details class="acordeon-item">
+                    <summary class="acordeon-titulo">¿Cómo funciona el acordeón sin JavaScript?</summary>
+                    <div class="acordeon-contenido">
+                        <p>
+                            HTML5 incluye por defecto las etiquetas <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code>, las cuales el navegador abre y cierra automáticamente cuando el usuario hace clic en el título, sin necesidad de programar ningún script.
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de pagina -->
+    <footer class="pie-pagina">
+        <div class="contenedor">
+            <p>Guía de Estilos - Aura Studio Creativo &copy; 2026</p>
+            <p class="pie-nota">Prácticas Profesionales 1 - Trabajo Práctico con HTML5 y CSS</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

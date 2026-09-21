@@ -1,0 +1,361 @@
+/* Estilos de la guia de estilos - Aura Studio */
+
+/* Reseteo basico para que los navegadores se vean parecidos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Tipografia y color de fondo principal */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f7f8fc;
+    color: #2d3436;
+    line-height: 1.6;
+}
+
+/* Contenedor para centrar el contenido en la pantalla */
+.contenedor {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Encabezado con degradado de colores */
+.cabecera {
+    background: linear-gradient(135deg, #7c5cfc, #ff6b8b);
+    color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+    margin-bottom: 40px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+.etiqueta-tema {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.titulo-principal {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.descripcion-cabecera {
+    font-size: 16px;
+    max-width: 650px;
+    margin: 0 auto;
+    opacity: 0.95;
+}
+
+/* Espaciado entre secciones */
+.seccion-guia {
+    margin-bottom: 45px;
+}
+
+.subtitulo-seccion {
+    font-size: 22px;
+    color: #7c5cfc;
+    margin-bottom: 6px;
+    border-bottom: 2px solid #e1e3ed;
+    padding-bottom: 6px;
+}
+
+.texto-explicativo {
+    color: #636e72;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* Caja blanca para mostrar cada componente */
+.caja-componente {
+    background-color: #ffffff;
+    border: 1px solid #e9ecf5;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Alinear botones y enlaces en fila */
+.fila-elementos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+}
+
+/* Muestras de la paleta de colores */
+.grilla-colores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.caja-color {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e9ecf5;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+}
+
+.muestra-color {
+    height: 90px;
+    width: 100%;
+}
+
+.color-primario {
+    background-color: #7c5cfc;
+}
+
+.color-secundario {
+    background-color: #ff6b8b;
+}
+
+.color-acento {
+    background-color: #48dbfb;
+}
+
+.color-oscuro {
+    background-color: #2d3436;
+}
+
+.info-color {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-color strong {
+    font-size: 14px;
+}
+
+.info-color span {
+    font-size: 13px;
+    color: #636e72;
+}
+
+/* Muestras de tipografias */
+.ejemplo-h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2d3436;
+    margin-bottom: 10px;
+}
+
+.ejemplo-h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #7c5cfc;
+    margin-bottom: 10px;
+}
+
+.ejemplo-h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ff6b8b;
+    margin-bottom: 12px;
+}
+
+.ejemplo-parrafo {
+    font-size: 15px;
+    color: #555555;
+}
+
+/* Botones con efecto 3D */
+.btn-3d {
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+/* Boton 3D primario */
+.btn-3d-primario {
+    background-color: #7c5cfc;
+    box-shadow: 0 5px 0 #5a3ad6, 0 8px 12px rgba(124, 92, 252, 0.3);
+}
+
+/* Efecto de hundimiento cuando se hace clic en el boton */
+.btn-3d-primario:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #5a3ad6;
+}
+
+/* Boton 3D secundario */
+.btn-3d-secundario {
+    background-color: #ff6b8b;
+    box-shadow: 0 5px 0 #d94b6b, 0 8px 12px rgba(255, 107, 139, 0.3);
+}
+
+.btn-3d-secundario:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #d94b6b;
+}
+
+/* Boton 3D turquesa */
+.btn-3d-acento {
+    background-color: #1dd1a1;
+    box-shadow: 0 5px 0 #10ac84, 0 8px 12px rgba(29, 209, 161, 0.3);
+}
+
+.btn-3d-acento:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 #10ac84;
+}
+
+/* Enlaces animados con cambio de color */
+.link-animado {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: inline-block;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Enlace 1: cambia de color y se mueve a la derecha */
+.link-color-1 {
+    color: #7c5cfc;
+    border-bottom: 2px solid #7c5cfc;
+}
+
+.link-color-1:hover {
+    color: #ff6b8b;
+    border-bottom-color: #ff6b8b;
+    transform: translateX(5px);
+}
+
+/* Enlace 2: aparece un fondo de color al pasar el mouse */
+.link-color-2 {
+    color: #2d3436;
+    background-color: #f1f2f6;
+}
+
+.link-color-2:hover {
+    color: #ffffff;
+    background-color: #7c5cfc;
+    transform: scale(1.04);
+}
+
+/* Enlace 3: borde que cambia a relleno completo */
+.link-color-3 {
+    color: #ff6b8b;
+    border: 2px solid #ff6b8b;
+}
+
+.link-color-3:hover {
+    color: #ffffff;
+    background-color: #ff6b8b;
+    transform: translateY(-2px);
+}
+
+/* Formulario */
+.formulario-estilo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.etiqueta-campo {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #2d3436;
+}
+
+/* Borde normal de los campos */
+.campo-input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 10px 14px;
+    border: 2px solid #dfe4ea;
+    border-radius: 8px;
+    background-color: #fcfcfd;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+/* Resaltado del campo con foco (:focus) */
+.campo-input:focus {
+    outline: none;
+    border-color: #7c5cfc;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(124, 92, 252, 0.2);
+}
+
+/* Acordeon de textos con HTML5 */
+.acordeon-item {
+    border: 1px solid #dfe4ea;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    background-color: #fafbfc;
+    transition: background-color 0.2s ease;
+}
+
+/* Titulo del acordeon que se puede clickear */
+.acordeon-titulo {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 18px;
+    cursor: pointer;
+    color: #2d3436;
+    user-select: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.acordeon-titulo:hover {
+    background-color: #f1f2f6;
+    color: #7c5cfc;
+}
+
+/* Cuando el acordeon esta abierto */
+.acordeon-item[open] {
+    background-color: #ffffff;
+    border-color: #7c5cfc;
+}
+
+.acordeon-item[open] .acordeon-titulo {
+    color: #7c5cfc;
+    border-bottom: 1px solid #e9ecf5;
+}
+
+/* Texto dentro del acordeon */
+.acordeon-contenido {
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #555555;
+    background-color: #ffffff;
+}
+
+/* Pie de pagina */
+.pie-pagina {
+    text-align: center;
+    padding: 30px 0;
+    color: #a4b0be;
+    font-size: 14px;
+    margin-top: 30px;
+    border-top: 1px solid #e4e7eb;
+}
+
+.pie-nota {
+    font-size: 12px;
+    margin-top: 4px;
+}
