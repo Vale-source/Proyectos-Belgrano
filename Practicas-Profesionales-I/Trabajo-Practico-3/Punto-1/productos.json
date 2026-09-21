@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "nombre": "Remera Algodón Clásica",
+    "precio": 8500,
+    "categoria": "Remeras",
+    "talle": "M",
+    "color": "Negro",
+    "stock": 5,
+    "descripcion": "Remera de algodón 100% peinado, suave al tacto y de corte regular. Ideal para uso diario.",
+    "imagen": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 2,
+    "nombre": "Pantalón Jean Slim Fit",
+    "precio": 24000,
+    "categoria": "Pantalones",
+    "talle": "L",
+    "color": "Azul",
+    "stock": 4,
+    "descripcion": "Jean de mezclilla resistente con 2% de elastano para mayor comodidad. Tiro medio y lavado clásico.",
+    "imagen": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 3,
+    "nombre": "Buzo Canguro Oversize",
+    "precio": 19500,
+    "categoria": "Abrigos",
+    "talle": "XL",
+    "color": "Gris",
+    "stock": 3,
+    "descripcion": "Buzo con capucha frizado, bolsillo frontal canguro y cordones ajustables. Calce amplio y cómodo.",
+    "imagen": "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 4,
+    "nombre": "Campera Térmica Impermeable",
+    "precio": 45000,
+    "categoria": "Abrigos",
+    "talle": "L",
+    "color": "Negro",
+    "stock": 2,
+    "descripcion": "Campera abrigada rellena con guata siliconada, tela exterior repelente al agua con cierre hermético.",
+    "imagen": "https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 5,
+    "nombre": "Zapatillas Urbanas Street",
+    "precio": 38000,
+    "categoria": "Calzado",
+    "talle": "42",
+    "color": "Blanco",
+    "stock": 4,
+    "descripcion": "Zapatillas de cuero sintético con suela antideslizante. Diseño moderno y gran amortiguación.",
+    "imagen": "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 6,
+    "nombre": "Pantalón Cargo Urbano",
+    "precio": 21000,
+    "categoria": "Pantalones",
+    "talle": "M",
+    "color": "Verde",
+    "stock": 3,
+    "descripcion": "Pantalón estilo cargo con múltiples bolsillos utilitarios y elástico en los tobillos.",
+    "imagen": "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 7,
+    "nombre": "Remera Estampada Vintage",
+    "precio": 9200,
+    "categoria": "Remeras",
+    "talle": "S",
+    "color": "Blanco",
+    "stock": 6,
+    "descripcion": "Remera blanca con estampado frontal de estilo retro. Cuello redondo reforzado.",
+    "imagen": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 8,
+    "nombre": "Camisa Leñadora Cuadros",
+    "precio": 18500,
+    "categoria": "Abrigos",
+    "talle": "L",
+    "color": "Rojo",
+    "stock": 3,
+    "descripcion": "Camisa de franela abrigada a cuadros rojos y negros. Doble bolsillo en el pecho.",
+    "imagen": "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 9,
+    "nombre": "Bermuda de Jean Desgastada",
+    "precio": 16000,
+    "categoria": "Pantalones",
+    "talle": "M",
+    "color": "Azul",
+    "stock": 5,
+    "descripcion": "Bermuda clásica de denim con pequeños detalles rasgados y dobladillo en el borde inferior.",
+    "imagen": "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 10,
+    "nombre": "Zapatillas Deportivas Runner",
+    "precio": 41000,
+    "categoria": "Calzado",
+    "talle": "41",
+    "color": "Negro",
+    "stock": 2,
+    "descripcion": "Calzado liviano con capellada de malla respirable y cámara de aire para entrenamiento o caminatas.",
+    "imagen": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+  }
+]

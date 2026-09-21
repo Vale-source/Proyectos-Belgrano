@@ -1,0 +1,82 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.hero-banner {
+    background: linear-gradient(135deg, #212529, #343a40);
+    color: white;
+    padding: 40px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.card-producto {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #ffffff;
+}
+
+.card-producto:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-producto img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    background-color: #f1f1f1;
+}
+
+.card-producto .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.precio-producto {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #0d6efd;
+}
+
+.card-filtros {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+}
+
+#modal-detalle-img {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.carrito-img-miniatura {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.btn-flotante-carrito {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.badge-contador {
+    font-size: 0.85rem;
+}

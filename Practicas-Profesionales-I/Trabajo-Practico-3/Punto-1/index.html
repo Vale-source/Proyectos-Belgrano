@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moda Urbana | Tienda de Ropa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="bi bi-bag-heart-fill text-danger fs-4"></i>
+                <span>Moda Urbana</span>
+            </a>
+            
+            <button class="btn btn-primary position-relative d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                <i class="bi bi-cart3 fs-5"></i>
+                <span>Mi Carrito</span>
+                <span id="contador-carrito" class="badge bg-danger rounded-pill badge-contador">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container my-4">
+        <div class="hero-banner text-center shadow-sm">
+            <h1 class="display-6 fw-bold mb-2">Colección de Temporada</h1>
+            <p class="lead mb-0 text-light opacity-75">Explorá nuestro catálogo con las mejores prendas y promociones exclusivas.</p>
+        </div>
+
+        <div class="row g-4">
+            <aside class="col-lg-3">
+                <div class="card card-filtros p-3 shadow-sm sticky-top" style="top: 85px;">
+                    <h5 class="card-title fw-bold mb-3 d-flex align-items-center gap-2">
+                        <i class="bi bi-funnel-fill text-primary"></i> Filtros
+                    </h5>
+
+                    <div class="mb-3">
+                        <label for="input-busqueda" class="form-label fw-semibold">Buscar producto:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                            <input type="text" id="input-busqueda" class="form-control" placeholder="Ej: pantalon, remera...">
+                        </div>
+                        <small class="text-muted">Busca por cualquier parte del nombre (sin importar tildes o mayúsculas).</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="select-categoria" class="form-label fw-semibold">Categoría:</label>
+                        <select id="select-categoria" class="form-select">
+                            <option value="todas">Todas las categorías</option>
+                            <option value="Remeras">Remeras</option>
+                            <option value="Pantalones">Pantalones</option>
+                            <option value="Abrigos">Abrigos</option>
+                            <option value="Calzado">Calzado</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="select-talle" class="form-label fw-semibold">Talle:</label>
+                        <select id="select-talle" class="form-select">
+                            <option value="todos">Todos los talles</option>
+                            <option value="S">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="select-color" class="form-label fw-semibold">Color:</label>
+                        <select id="select-color" class="form-select">
+                            <option value="todos">Todos los colores</option>
+                            <option value="Negro">Negro</option>
+                            <option value="Blanco">Blanco</option>
+                            <option value="Azul">Azul</option>
+                            <option value="Gris">Gris</option>
+                            <option value="Verde">Verde</option>
+                            <option value="Rojo">Rojo</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Rango de precio ($):</label>
+                        <div class="row g-2">
+                            <div class="col-6">
+                                <input type="number" id="precio-min" class="form-control" placeholder="Mínimo" min="0">
+                            </div>
+                            <div class="col-6">
+                                <input type="number" id="precio-max" class="form-control" placeholder="Máximo" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="btn-limpiar-filtros" class="btn btn-outline-secondary w-100 mt-2">
+                        <i class="bi bi-arrow-counterclockwise"></i> Limpiar Filtros
+                    </button>
+                </div>
+            </aside>
+
+            <section class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="fw-bold mb-0">Nuestros Productos</h4>
+                    <span id="contador-resultados" class="badge bg-secondary fs-6">0 productos encontrados</span>
+                </div>
+
+                <div id="contenedor-productos" class="row g-4"></div>
+
+                <div id="mensaje-sin-resultados" class="alert alert-warning text-center d-none my-4 py-4 shadow-sm" role="alert">
+                    <i class="bi bi-exclamation-circle fs-2 d-block mb-2"></i>
+                    <h5>No se encontraron productos</h5>
+                    <p class="mb-0 text-muted">Intenta cambiar los términos de búsqueda o restablecer los filtros.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-light text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-1">Moda Urbana &copy; 2026 - Prácticas Profesionales 1 (TP3 - Punto 1)</p>
+            <small class="text-muted">Desarrollado con HTML, CSS, JavaScript y Bootstrap</small>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="modalDetalle" tabindex="-1" aria-labelledby="modalDetalleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalDetalleLabel">Detalle del Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-md-5">
+                            <img id="modal-detalle-img" src="" alt="Imagen de producto" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-7">
+                            <span id="modal-detalle-categoria" class="badge bg-secondary mb-2"></span>
+                            <h4 id="modal-detalle-nombre" class="fw-bold mb-2"></h4>
+                            <h3 id="modal-detalle-precio" class="text-primary fw-bold mb-3"></h3>
+                            
+                            <p id="modal-detalle-descripcion" class="text-muted mb-3"></p>
+                            
+                            <ul class="list-group list-group-flush mb-3">
+                                <li class="list-group-item px-0"><strong>Talle:</strong> <span id="modal-detalle-talle"></span></li>
+                                <li class="list-group-item px-0"><strong>Color:</strong> <span id="modal-detalle-color"></span></li>
+                                <li class="list-group-item px-0"><strong>Stock disponible:</strong> <span id="modal-detalle-stock" class="fw-bold"></span> unidades</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btn-modal-agregar" type="button" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Agregar al Carrito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-white">
+                    <h5 class="modal-title fw-bold d-flex align-items-center gap-2" id="modalCarritoLabel">
+                        <i class="bi bi-cart3"></i> Carrito de Compras
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="mensaje-carrito-vacio" class="text-center py-4">
+                        <i class="bi bi-cart-x text-muted" style="font-size: 3rem;"></i>
+                        <h5 class="mt-2">Tu carrito está vacío</h5>
+                        <p class="text-muted">¡Agrega productos del catálogo para comenzar tu compra!</p>
+                    </div>
+
+                    <div id="tabla-carrito-contenedor" class="table-responsive d-none">
+                        <table class="table table-hover align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Producto</th>
+                                    <th>Precio</th>
+                                    <th class="text-center">Cantidad</th>
+                                    <th>Subtotal</th>
+                                    <th class="text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cuerpo-tabla-carrito"></tbody>
+                        </table>
+
+                        <div class="d-flex justify-content-end align-items-center p-3 bg-light rounded mt-3">
+                            <h4 class="mb-0 fw-bold">Total a Pagar: <span id="total-carrito" class="text-success">$0</span></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
+                    <button id="btn-vaciar-carrito" type="button" class="btn btn-outline-danger d-none">
+                        <i class="bi bi-trash"></i> Vaciar Carrito
+                    </button>
+                    <button id="btn-finalizar-compra" type="button" class="btn btn-success d-none">
+                        <i class="bi bi-check-circle"></i> Finalizar Compra
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-danger btn-flotante-carrito rounded-circle p-3 d-lg-none" data-bs-toggle="modal" data-bs-target="#modalCarrito" title="Ver Carrito">
+        <i class="bi bi-cart3 fs-4"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
