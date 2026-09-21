@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minijuego: Adivina el Número</title>
+
+    <!-- Hoja de estilos externa -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Tarjeta principal del juego -->
+    <div class="tarjeta-juego">
+
+        <!-- Titulo y explicacion del juego -->
+        <h1>Adivina el Número</h1>
+        <p class="subtitulo">Elige una dificultad e intenta descubrir el número secreto con las pistas.</p>
+
+        <!-- Selector de dificultad -->
+        <div class="caja-dificultad">
+            <label for="selector-dificultad">Dificultad:</label>
+            <select id="selector-dificultad">
+                <option value="facil">Fácil (del 1 al 10 - 5 intentos)</option>
+                <option value="medio" selected>Medio (del 1 al 50 - 7 intentos)</option>
+                <option value="dificil">Difícil (del 1 al 100 - 5 intentos)</option>
+            </select>
+        </div>
+
+        <!-- Texto que indica el rango segun la dificultad -->
+        <div class="caja-rango">
+            <p id="texto-rango">Estoy pensando un número entre <strong>1</strong> y <strong>50</strong></p>
+        </div>
+
+        <!-- Zona para ingresar el numero y probar -->
+        <div class="zona-ingreso">
+            <input type="number" id="numero-usuario" placeholder="Ingresa un número" min="1" max="50">
+            <button type="button" id="btn-adivinar" class="btn-probar">Probar</button>
+        </div>
+
+        <!-- Mensajes para pistas o si gano/perdio -->
+        <div id="caja-mensaje" class="caja-mensaje">
+            <p id="mensaje-juego">¡Mucha suerte! Haz tu primer intento.</p>
+        </div>
+
+        <!-- Informacion de intentos restantes y numeros jugados -->
+        <div class="panel-datos">
+            <p>Intentos restantes: <strong id="intentos-restantes">7</strong></p>
+            <p>Números ingresados: <span id="historial-intentos">-</span></p>
+        </div>
+
+        <!-- Boton para reiniciar la partida -->
+        <button type="button" id="btn-reiniciar" class="btn-reiniciar">Jugar de nuevo</button>
+
+    </div>
+
+    <!-- Archivo con el codigo JavaScript (al final del body para que encuentre los elementos del HTML) -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>
