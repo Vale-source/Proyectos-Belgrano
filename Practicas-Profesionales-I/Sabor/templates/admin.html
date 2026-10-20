@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel privado de administración de Sabor">
+    <title>Administración · Sabor</title>
+    <link rel="stylesheet" href="/static/admin.css">
+    <script src="/cliente/admin.js"></script>
+</head>
+
+<body>
+    <main class="admin-shell">
+
+        <section class="admin-dashboard" id="admin-dashboard" aria-labelledby="dashboard-title">
+            <aside class="admin-sidebar" aria-label="Navegación administrativa">
+                <div>
+                    <a class="dashboard-brand" href="/">Sabor<span>.</span></a>
+                    <p class="sidebar-label">Administración</p>
+                    <nav class="sidebar-nav">
+                        <a class="sidebar-link is-active" href="#branches-section">Sucursales</a>
+                    </nav>
+                </div>
+                <div class="sidebar-footer">
+                    <span class="owner-avatar" aria-hidden="true">D</span>
+                    <div>
+                        <strong>Dueño de Sabor</strong>
+                        <small>Administrador</small>
+                    </div>
+                    <button class="icon-button" type="button" aria-label="Cerrar sesión" data-action="logout">↗</button>
+                </div>
+            </aside>
+
+            <div class="dashboard-content">
+                <header class="dashboard-header">
+                    <div>
+                        <p class="eyebrow">Panel general</p>
+                        <h1 id="dashboard-title">Buen día, dueño de Sabor</h1>
+                        <p class="dashboard-subtitle">Gestioná la operación de tus tres sucursales desde un solo lugar.
+                        </p>
+                    </div>
+                    <button class="button button-primary" type="button" data-action="add-branch">+ Nueva
+                        sucursal</button>
+                </header>
+
+                <section class="metric-grid" aria-label="Resumen del negocio">
+                    <article class="metric-card">
+                        <span class="metric-label">Sucursales activas</span>
+                        <strong id="metric-branches">3</strong>
+                        <span class="metric-detail">Todas operativas</span>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-label">Trabajadores</span>
+                        <strong id="metric-workers">18</strong>
+                        <span class="metric-detail">+2 este mes</span>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-label">Platos en carta</span>
+                        <strong id="metric-dishes">20</strong>
+                        <span class="metric-detail">6 destacados</span>
+                    </article>
+                </section>
+
+                <section class="content-section" id="branches-section" aria-labelledby="branches-title">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Gestión</p>
+                            <h2 id="branches-title">Tus sucursales</h2>
+                        </div>
+                    </div>
+                    <div class="branch-list" id="branch-container">
+                        <article class="branch-row" data-branch-id="centro">
+                            <div class="branch-symbol" aria-hidden="true">SC</div>
+                            <div class="branch-main">
+                                <h3>Sabor Centro</h3>
+                                <p>Av. Corrientes 1234 · Buenos Aires</p>
+                            </div>
+                            <span class="status status-active">Activa</span>
+                            <span class="branch-meta">6 platos · 8 trabajadores</span>
+                            <button class="button button-outline" type="button" data-action="view-branch"
+                                data-branch-id="centro">Ver sucursal</button>
+                            <button class="icon-button danger" type="button" aria-label="Eliminar Sabor Centro"
+                                data-action="delete-branch" data-branch-id="centro">×</button>
+                        </article>
+                        <article class="branch-row" data-branch-id="palermo">
+                            <div class="branch-symbol" aria-hidden="true">SP</div>
+                            <div class="branch-main">
+                                <h3>Sabor Palermo</h3>
+                                <p>Honduras 5500 · Buenos Aires</p>
+                            </div>
+                            <span class="status status-active">Activa</span>
+                            <span class="branch-meta">5 platos · 6 trabajadores</span>
+                            <button class="button button-outline" type="button" data-action="view-branch"
+                                data-branch-id="palermo">Ver sucursal</button>
+                            <button class="icon-button danger" type="button" aria-label="Eliminar Sabor Palermo"
+                                data-action="delete-branch" data-branch-id="palermo">×</button>
+                        </article>
+                        <article class="branch-row" data-branch-id="costanera">
+                            <div class="branch-symbol" aria-hidden="true">SC</div>
+                            <div class="branch-main">
+                                <h3>Sabor Costanera</h3>
+                                <p>Av. Rafael Obligado 2100 · Buenos Aires</p>
+                            </div>
+                            <span class="status status-active">Activa</span>
+                            <span class="branch-meta">5 platos · 4 trabajadores</span>
+                            <button class="button button-outline" type="button" data-action="view-branch"
+                                data-branch-id="costanera">Ver sucursal</button>
+                            <button class="icon-button danger" type="button" aria-label="Eliminar Sabor Costanera"
+                                data-action="delete-branch" data-branch-id="costanera">×</button>
+                        </article>
+                    </div>
+                </section>
+
+            </div>
+        </section>
+    </main>
+
+    <dialog class="modal-window" id="branch-modal" aria-labelledby="branch-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Detalle de sucursal</p>
+                <h2 id="branch-modal-title">Sabor Centro</h2>
+            </div><button class="modal-close" type="button" aria-label="Cerrar detalle de sucursal"
+                data-action="close-branch">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="detail-grid">
+                <div><span class="detail-label">Dirección</span><strong id="branch-detail-address">Av. Corrientes
+                        1234</strong></div>
+                <div><span class="detail-label">Horario</span><strong id="branch-detail-hours">Lun a Dom · 12:00 –
+                        23:00</strong></div>
+                <div><span class="detail-label">Teléfono</span><strong id="branch-detail-phone">+54 11 4321
+                        1234</strong></div>
+            </div>
+            <section class="modal-section" aria-labelledby="modal-workers-title">
+                <div class="modal-section-title">
+                    <h3 id="modal-workers-title">Trabajadores</h3><button class="button button-small button-secondary"
+                        type="button" data-action="add-worker">+ Agregar</button>
+                </div>
+                <ul class="worker-list" id="modal-worker-list">
+                    <!-- Trabajadores se renderizan dinámicamente -->
+                </ul>
+            </section>
+            <section class="modal-section" aria-labelledby="modal-menu-title">
+                <div class="modal-section-title">
+                    <h3 id="modal-menu-title">Platos y precios</h3><button class="button button-small button-secondary"
+                        type="button" data-action="add-dish">+ Agregar plato</button>
+                </div>
+                <div class="dish-editor" id="modal-dish-list">
+                    <!-- Platos se renderizan dinámicamente -->
+                </div>
+            </section>
+        </div>
+        <div class="modal-footer"><button class="button button-outline" type="button"
+                data-action="close-branch">Cerrar</button><button class="button button-primary" type="button"
+                data-action="save-branch">Guardar cambios</button></div>
+    </dialog>
+
+    <dialog class="modal-window worker-modal" id="worker-modal" aria-labelledby="worker-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Equipo de sucursal</p>
+                <h2 id="worker-modal-title">Editar trabajador</h2>
+            </div><button class="modal-close" type="button" aria-label="Cerrar edición de trabajador"
+                data-action="close-worker">×</button>
+        </div>
+        <form class="modal-body worker-form" id="worker-form" data-worker-form="edit">
+            <div class="form-field"><label for="worker-name">Nombre completo</label><input id="worker-name" name="name"
+                    type="text" placeholder="Ej. Martina Gómez" required></div>
+            <div class="form-field"><label for="worker-role">Puesto / Cargo</label><input id="worker-role" name="role"
+                    type="text" placeholder="Ej. Encargada" required></div>
+            <div class="form-field"><label for="worker-salary">Sueldo mensual</label>
+                <div class="input-prefix"><span>$</span><input id="worker-salary" name="salary" type="number"
+                        placeholder="780000" min="0" required></div>
+            </div>
+            <div class="form-field"><label for="worker-phone">Número telefónico</label><input id="worker-phone"
+                    name="phone" type="tel" placeholder="+54 9 11 5555 1212" pattern="[\+]?[0-9\s\-]{7,18}"
+                    title="Ingresá solo números, espacios, el signo + y guiones" autocomplete="tel" required></div>
+        </form>
+        <div class="modal-footer"><button class="button button-outline" type="button"
+                data-action="close-worker">Cancelar</button><button class="button button-primary" type="submit"
+                form="worker-form" data-action="save-worker">Guardar trabajador</button></div>
+    </dialog>
+
+    <dialog class="modal-window" id="add-branch-modal" aria-labelledby="add-branch-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Gestión de sucursales</p>
+                <h2 id="add-branch-modal-title">Nueva sucursal</h2>
+            </div>
+            <button class="modal-close" type="button" aria-label="Cerrar ventana de nueva sucursal"
+                data-action="close-add-branch">×</button>
+        </div>
+        <form class="modal-body worker-form" id="add-branch-form">
+            <div class="form-field">
+                <label for="branch-name-input">Nombre de la sucursal</label>
+                <input id="branch-name-input" name="name" type="text" placeholder="Ej. Sabor Belgrano" required>
+            </div>
+            <div class="form-field">
+                <label for="branch-address-input">Dirección</label>
+                <input id="branch-address-input" name="address" type="text"
+                    placeholder="Ej. Av. Cabildo 2000 · Buenos Aires" required>
+            </div>
+            <div class="form-field">
+                <label>Horarios de atención</label>
+                <div class="hours-selector-grid">
+                    <div class="form-subfield">
+                        <label for="branch-days-start">Días (Desde)</label>
+                        <select id="branch-days-start" name="days_start" required>
+                            <option value="Lun" selected>Lunes</option>
+                            <option value="Mar">Martes</option>
+                            <option value="Mié">Miércoles</option>
+                            <option value="Jue">Jueves</option>
+                            <option value="Vie">Viernes</option>
+                            <option value="Sáb">Sábado</option>
+                            <option value="Dom">Domingo</option>
+                        </select>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-days-end">Días (Hasta)</label>
+                        <select id="branch-days-end" name="days_end" required>
+                            <option value="Dom" selected>Domingo</option>
+                            <option value="Sáb">Sábado</option>
+                            <option value="Vie">Viernes</option>
+                            <option value="Jue">Jueves</option>
+                            <option value="Mié">Miércoles</option>
+                            <option value="Mar">Martes</option>
+                            <option value="Lun">Lunes</option>
+                        </select>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-time-open">Horario Apertura</label>
+                        <input id="branch-time-open" name="time_open" type="time" value="12:00" required>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-time-close">Horario Cierre</label>
+                        <input id="branch-time-close" name="time_close" type="time" value="23:00" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="branch-phone-input">Teléfono de contacto</label>
+                <input id="branch-phone-input" name="phone" type="tel" placeholder="Ej. +54 11 4555 6666"
+                    pattern="[\+]?[0-9\s\-]{7,18}" title="Ingresá solo números, espacios, el signo + y guiones"
+                    required>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button class="button button-outline" type="button" data-action="close-add-branch">Cancelar</button>
+            <button class="button button-primary" type="submit" form="add-branch-form">Crear sucursal</button>
+        </div>
+    </dialog>
+</body>
+
+</html>
