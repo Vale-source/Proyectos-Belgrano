@@ -1,4 +1,4 @@
-from sqlalchemy import Integer
+from sqlalchemy import Integer, UniqueConstraint
 from datetime import datetime
 from sqlalchemy import String, Numeric, Boolean, ForeignKey, Enum, Time
 from sqlalchemy.orm import Mapped, mapped_column, relationship
@@ -7,6 +7,9 @@ import enum
 
 class Empleado(Base):
     __tablename__ = "empleado"
+    __table_args__ = (
+        UniqueConstraint('nombre', 'apellido', 'id_sucursal', name='uq_empleado_nombre_apellido_sucursal'),
+    )
     
     nombre: Mapped[str] = mapped_column(String(100))
     apellido: Mapped[str] = mapped_column(String(100))
@@ -30,6 +33,9 @@ class DiaSemana(enum.Enum):
 
 class Horario(Base):
     __tablename__ = "horario"
+    __table_args__ = (
+        UniqueConstraint('dia', 'hora_apertura', 'hora_cierre', name='uq_horario_dia_horas'),
+    )
 
     dia: Mapped[DiaSemana] = mapped_column(Enum(DiaSemana), nullable=False)
     hora_apertura: Mapped[datetime.time] = mapped_column(Time, nullable=False)
@@ -41,6 +47,9 @@ class Horario(Base):
 
 class Plato(Base):
     __tablename__ = "plato"
+    __table_args__ = (
+        UniqueConstraint('nombre', name='uq_plato_nombre'),
+    )
 
     nombre: Mapped[str] = mapped_column(String(100))
     precio: Mapped[float] = mapped_column(Numeric(10,2))
@@ -62,6 +71,9 @@ class Puesto(Base):
 
 class Sucursal(Base):
     __tablename__ = "sucursal"
+    __table_args__ = (
+        UniqueConstraint('nombre', name='uq_sucursal_nombre'),
+    )
 
     nombre: Mapped[str] = mapped_column(String(100))
     direccion: Mapped[str] = mapped_column(String(255), nullable=False)
@@ -79,12 +91,18 @@ class Sucursal(Base):
 
 class Sucursal_plato(Base):
     __tablename__ = "sucursal_plato"
+    __table_args__ = (
+        UniqueConstraint('id_sucursal', 'id_plato', name='uq_sucursal_plato'),
+    )
 
     id_sucursal: Mapped[int] = mapped_column(ForeignKey("sucursal.id", ondelete="RESTRICT"))
     id_plato: Mapped[int] = mapped_column(ForeignKey("plato.id", ondelete="RESTRICT"))
 
 class Sucursal_horario(Base):
     __tablename__ = "sucursal_horario"
+    __table_args__ = (
+        UniqueConstraint('id_sucursal', 'id_horario', name='uq_sucursal_horario'),
+    )
 
     id_sucursal: Mapped[int] = mapped_column(ForeignKey("sucursal.id", ondelete="RESTRICT"))
     id_horario: Mapped[int] = mapped_column(ForeignKey("horario.id", ondelete="RESTRICT"))
