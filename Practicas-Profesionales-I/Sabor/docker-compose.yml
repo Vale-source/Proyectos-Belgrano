@@ -1,0 +1,19 @@
+services:
+  db:
+    image: mariadb:latest
+    container_name: sabor_mariadb
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD:-rootpass}
+      MARIADB_DATABASE: ${DB_NAME:-sabor}
+      MARIADB_USER: ${DB_USER:-root}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-rootpass}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - sabor_data:/var/lib/mysql
+
+volumes:
+  sabor_data:
