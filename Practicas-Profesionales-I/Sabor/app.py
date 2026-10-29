@@ -8,7 +8,7 @@ from sqlalchemy import select
 from database import SessionLocal
 from models.models import Usuario
 from routes import all_blueprints
-from utils.extensions import bitacora_accesos, csrf, limiter
+from utils.extensions import bitacora_accesos, cors, csrf, limiter
 
 
 def create_app():
@@ -67,6 +67,7 @@ def create_app():
 
     csrf.init_app(app)  # contra ataque CSRF
     limiter.init_app(app)  # contra ataque fuerza bruta
+    cors.init_app(app)  # soporte para peticiones de orígenes cruzados (CORS)
 
     logs_dir = base_dir / "logs"
     logs_dir.mkdir(exist_ok=True)

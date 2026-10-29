@@ -11,6 +11,7 @@ Plataforma integral para la administración operativa de cadenas gastronómicas.
 * **Migraciones de Esquema:** Alembic
 * **Contenedores:** Docker & Docker Compose
 * **Seguridad Web:**
+  * **Flask-CORS:** Gestión de políticas de intercambio de recursos de origen cruzado (CORS).
   * **Flask-WTF / CSRFProtect:** Mitigación de ataques CSRF mediante inyección transparente de token en peticiones AJAX/Fetch.
   * **Flask-Limiter:** Limitación de tasa de solicitudes (rate limiting) en endpoints críticos contra ataques de fuerza bruta.
   * **Cabeceras HTTP de Seguridad:** `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`.
