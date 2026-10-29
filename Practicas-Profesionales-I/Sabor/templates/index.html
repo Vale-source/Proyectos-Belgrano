@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel de administración de Sabor">
+    <title>Administración · Sabor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+    <script defer src="{{ url_for('static', filename='admin.js') }}"></script>
+</head>
+
+<body>
+    <main class="admin-shell">
+        <section class="admin-dashboard" id="admin-dashboard" aria-labelledby="dashboard-title">
+            <aside class="admin-sidebar" aria-label="Navegación administrativa">
+                <div>
+                    <a class="dashboard-brand" href="/">Sabor<span>.</span></a>
+                    <p class="sidebar-label">Administración</p>
+                    <nav class="sidebar-nav">
+                        <a class="sidebar-link is-active" href="/">Sucursales</a>
+                    </nav>
+                </div>
+                <div class="sidebar-footer">
+                    <span class="owner-avatar" aria-hidden="true">S</span>
+                    <div>
+                        <strong>Administrador</strong>
+                        <small>Gestión Sabor</small>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="dashboard-content">
+                <header class="dashboard-header">
+                    <div>
+                        <p class="eyebrow">Panel general</p>
+                        <h1 id="dashboard-title">Bienvenido a Sabor</h1>
+                        <p class="dashboard-subtitle">Gestioná la operación de tus sucursales, empleados y platos en
+                            tiempo real.</p>
+                    </div>
+                    <button class="button button-primary" type="button" data-action="add-branch">+ Nueva
+                        sucursal</button>
+                </header>
+
+                {# Hago las metricas con Jinja dado que es codigo sencillo #}
+                {% set total_trabajadores = namespace(count=0) %}
+                {% set total_platos = namespace(count=0) %}
+                {% for s in sucursales %}
+                {% set total_trabajadores.count = total_trabajadores.count + s.trabajadores|length %}
+                {% set total_platos.count = total_platos.count + s.platos|length %}
+                {% endfor %}
+
+                <section class="metric-grid" aria-label="Resumen del negocio">
+                    <article class="metric-card">
+                        <span class="metric-label">Sucursales activas</span>
+                        <strong id="metric-branches">{{ sucursales|length }}</strong>
+                        <span class="metric-detail">Operativas en sistema</span>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-label">Trabajadores</span>
+                        <strong id="metric-workers">{{ total_trabajadores.count }}</strong>
+                        <span class="metric-detail">En plantilla total</span>
+                    </article>
+                    <article class="metric-card">
+                        <span class="metric-label">Platos en carta</span>
+                        <strong id="metric-dishes">{{ total_platos.count }}</strong>
+                        <span class="metric-detail">Platos ofrecidos</span>
+                    </article>
+                </section>
+
+                <section class="content-section" id="branches-section" aria-labelledby="branches-title">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Gestión</p>
+                            <h2 id="branches-title">Tus sucursales</h2>
+                        </div>
+                    </div>
+                    <div class="branch-list" id="branch-container">
+                        {% for sucursal in sucursales %}
+                        <article class="branch-row {% if not sucursal.activo %}is-inactive{% endif %}"
+                            data-branch-id="{{ sucursal.id }}">
+                            <div class="branch-symbol" aria-hidden="true">{{ sucursal.nombre[:2]|upper }}</div>
+                            <div class="branch-main">
+                                <h3>{{ sucursal.nombre }}</h3>
+                                <p>{{ sucursal.direccion }} · Tel: {{ sucursal.num_telefono }}</p>
+                            </div>
+                            <label class="toggle-switch" title="Activa / Inactiva">
+                                <input type="checkbox" data-action="toggle-branch" data-branch-id="{{ sucursal.id }}" {%
+                                    if sucursal.activo %}checked{% endif %}>
+                                <span class="toggle-slider"></span>
+                            </label>
+                            <span
+                                class="status {% if sucursal.activo %}status-active{% else %}status-inactive{% endif %}">
+                                {{ 'Activa' if sucursal.activo else 'Inactiva' }}
+                            </span>
+                            <span class="branch-meta">
+                                <span class="branch-dish-count">{{ sucursal.platos|length }}</span> platos ·
+                                <span class="branch-worker-count">{{ sucursal.trabajadores|length }}</span> trabajadores
+                            </span>
+                            <button class="button button-outline" type="button" data-action="view-branch"
+                                data-branch-id="{{ sucursal.id }}">Ver sucursal</button>
+                        </article>
+                        {% else %}
+                        <p class="helper-text">No hay sucursales registradas aún.</p>
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Detalle de Sucursal -->
+    <dialog class="modal-window" id="branch-modal" aria-labelledby="branch-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Detalle de sucursal</p>
+                <h2 id="branch-modal-title">Cargando...</h2>
+            </div>
+            <button class="modal-close" type="button" aria-label="Cerrar detalle de sucursal"
+                data-action="close-branch">×</button>
+        </div>
+        <div class="modal-body">
+            <div class="detail-grid">
+                <div>
+                    <span class="detail-label">Dirección</span>
+                    <strong id="branch-detail-address">-</strong>
+                </div>
+                <div>
+                    <span class="detail-label">Horario</span>
+                    <strong id="branch-detail-hours">-</strong>
+                </div>
+                <div>
+                    <span class="detail-label">Teléfono</span>
+                    <strong id="branch-detail-phone">-</strong>
+                </div>
+            </div>
+
+            <!-- Sección Trabajadores -->
+            <section class="modal-section" aria-labelledby="modal-workers-title">
+                <div class="modal-section-title">
+                    <h3 id="modal-workers-title">Trabajadores</h3>
+                    <button class="button button-small button-secondary" type="button" data-action="add-worker">+
+                        Agregar</button>
+                </div>
+                <ul class="worker-list" id="modal-worker-list">
+                    <!-- Trabajadores se renderizan dinámicamente con un fetch -->
+                </ul>
+            </section>
+
+            <!-- Sección Platos -->
+            <section class="modal-section" aria-labelledby="modal-menu-title">
+                <div class="modal-section-title">
+                    <h3 id="modal-menu-title">Platos y precios</h3>
+                    <button class="button button-small button-secondary" type="button" data-action="add-dish">+ Agregar
+                        plato</button>
+                </div>
+                <div class="dish-editor" id="modal-dish-list">
+                    <!-- Platos se renderizan dinámicamente con un fetch-->
+                </div>
+            </section>
+        </div>
+        <div class="modal-footer">
+            <button class="button button-outline" type="button" data-action="close-branch">Cerrar</button>
+        </div>
+    </dialog>
+
+    <!-- Modal Trabajador (Crear / Editar) -->
+    <dialog class="modal-window worker-modal" id="worker-modal" aria-labelledby="worker-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Equipo de sucursal</p>
+                <h2 id="worker-modal-title">Trabajador</h2>
+            </div>
+            <button class="modal-close" type="button" aria-label="Cerrar ventana de trabajador"
+                data-action="close-worker">×</button>
+        </div>
+        <form class="modal-body worker-form" id="worker-form">
+            <input type="hidden" id="worker-id" name="worker_id" value="">
+            <div class="form-field">
+                <label for="worker-name">Nombre</label>
+                <input id="worker-name" name="nombre" type="text" placeholder="Ej. Martina" required>
+            </div>
+            <div class="form-field">
+                <label for="worker-lastname">Apellido</label>
+                <input id="worker-lastname" name="apellido" type="text" placeholder="Ej. Gómez" required>
+            </div>
+            <div class="form-field">
+                <label for="worker-role">Puesto / Cargo</label>
+                <select id="worker-role" name="puesto" required>
+                    <option value="" disabled selected>Seleccioná un puesto</option>
+                    {% for puesto in puestos %}
+                    <option value="{{ puesto.id }}">{{ puesto.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-field">
+                <label for="worker-phone">Número telefónico</label>
+                <input id="worker-phone" name="numero_telefono" type="tel" placeholder="+54 9 11 5555 1212"
+                    pattern="[\+]?[0-9\s\-]{7,18}" required>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button class="button button-outline" type="button" data-action="close-worker">Cancelar</button>
+            <button class="button button-primary" type="submit" form="worker-form" id="worker-submit-btn">Guardar
+                trabajador</button>
+        </div>
+    </dialog>
+
+    <!-- Modal Plato (Crear / Editar) -->
+    <dialog class="modal-window worker-modal" id="dish-modal" aria-labelledby="dish-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Carta de sucursal</p>
+                <h2 id="dish-modal-title">Plato</h2>
+            </div>
+            <button class="modal-close" type="button" aria-label="Cerrar ventana de plato"
+                data-action="close-dish">×</button>
+        </div>
+        <form class="modal-body worker-form" id="dish-form">
+            <input type="hidden" id="dish-id" name="dish_id" value="">
+            <div class="form-field">
+                <label for="dish-name">Nombre del plato</label>
+                <input id="dish-name" name="nombre_plato" type="text" placeholder="Ej. Bife de chorizo" required>
+            </div>
+            <div class="form-field">
+                <label for="dish-price">Precio</label>
+                <div class="input-prefix">
+                    <span>$</span>
+                    <input id="dish-price" name="precio" type="number" step="0.01" min="0" placeholder="12500" required>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="dish-desc">Descripción</label>
+                <input id="dish-desc" name="descripcion" type="text"
+                    placeholder="Ej. Servido con papas rústicas y chimichurri" required>
+            </div>
+            <div class="form-field" style="display:flex; align-items:center; gap:10px; margin-top:8px;">
+                <input id="dish-celiaco" name="celiaco" type="checkbox"
+                    style="width:18px; height:18px; cursor:pointer;">
+                <label for="dish-celiaco" style="margin:0; cursor:pointer; font-weight:normal;">Apto celíaco (Sin
+                    TACC)</label>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button class="button button-outline" type="button" data-action="close-dish">Cancelar</button>
+            <button class="button button-primary" type="submit" form="dish-form" id="dish-submit-btn">Guardar
+                plato</button>
+        </div>
+    </dialog>
+
+    <!-- Modal Nueva Sucursal -->
+    <dialog class="modal-window" id="add-branch-modal" aria-labelledby="add-branch-modal-title" aria-modal="true">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">Gestión de sucursales</p>
+                <h2 id="add-branch-modal-title">Nueva sucursal</h2>
+            </div>
+            <button class="modal-close" type="button" aria-label="Cerrar ventana de nueva sucursal"
+                data-action="close-add-branch">×</button>
+        </div>
+        <form class="modal-body worker-form" id="add-branch-form">
+            <div class="form-field">
+                <label for="branch-name-input">Nombre de la sucursal</label>
+                <input id="branch-name-input" name="nombre" type="text" placeholder="Ej. Sabor Belgrano" required>
+            </div>
+            <div class="form-field">
+                <label for="branch-address-input">Dirección</label>
+                <input id="branch-address-input" name="direccion" type="text"
+                    placeholder="Ej. Av. Cabildo 2000 · Buenos Aires" required>
+            </div>
+            <div class="form-field">
+                <label>Horarios de atención</label>
+                <div class="hours-selector-grid">
+                    <div class="form-subfield">
+                        <label for="branch-day-desde">Desde</label>
+                        <select id="branch-day-desde" name="dia_desde" required>
+                            <option value="Lunes" selected>Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-day-hasta">Hasta</label>
+                        <select id="branch-day-hasta" name="dia_hasta" required>
+                            <option value="Lunes" selected>Lunes</option>
+                            <option value="Martes">Martes</option>
+                            <option value="Miercoles">Miércoles</option>
+                            <option value="Jueves">Jueves</option>
+                            <option value="Viernes">Viernes</option>
+                            <option value="Sabado">Sábado</option>
+                            <option value="Domingo">Domingo</option>
+                        </select>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-time-open">Horario Apertura</label>
+                        <input id="branch-time-open" name="hora_apertura" type="time" value="12:00" required>
+                    </div>
+                    <div class="form-subfield">
+                        <label for="branch-time-close">Horario Cierre</label>
+                        <input id="branch-time-close" name="hora_cierre" type="time" value="23:00" required>
+                    </div>
+                </div>
+            </div>
+            <div class="form-field">
+                <label for="branch-phone-input">Teléfono de contacto</label>
+                <input id="branch-phone-input" name="telefono" type="tel" placeholder="Ej. +54 11 4555 6666"
+                    pattern="[\+]?[0-9\s\-]{7,18}" required>
+            </div>
+        </form>
+        <div class="modal-footer">
+            <button class="button button-outline" type="button" data-action="close-add-branch">Cancelar</button>
+            <button class="button button-primary" type="submit" form="add-branch-form">Crear sucursal</button>
+        </div>
+    </dialog>
+</body>
+
+</html>

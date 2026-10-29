@@ -485,7 +485,7 @@ h3 {
 
 .branch-row {
     display: grid;
-    grid-template-columns: 42px minmax(160px, 1fr) auto auto auto 30px;
+    grid-template-columns: 42px minmax(160px, 1fr) auto auto auto auto 30px;
     align-items: center;
     gap: 16px;
     padding: 15px;
@@ -528,6 +528,74 @@ h3 {
 .status-active {
     background: var(--admin-success-soft);
     color: var(--admin-success);
+}
+
+.status-inactive {
+    background: var(--admin-danger-soft);
+    color: var(--admin-danger);
+}
+
+/* Items inactivos */
+.branch-row.is-inactive {
+    opacity: 0.55;
+}
+
+.worker-row.is-inactive,
+.dish-edit-row.is-inactive {
+    opacity: 0.5;
+}
+
+.worker-row.is-inactive .worker-info strong,
+.dish-edit-row.is-inactive strong {
+    text-decoration: line-through;
+}
+
+/* Toggle switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 38px;
+    height: 22px;
+    min-width: 38px;
+    max-width: 38px;
+    flex: 0 0 38px !important;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #d4ccc0;
+    border-radius: 22px;
+    transition: background-color .25s ease;
+}
+
+.toggle-slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform .25s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch input:checked + .toggle-slider {
+    background: var(--admin-success);
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+    transform: translateX(16px);
 }
 
 .branch-meta {
@@ -659,7 +727,7 @@ h3 {
     font-size: 11px;
 }
 
-.dish-edit-row label {
+.dish-edit-row label:not(.toggle-switch) {
     flex: 1;
     font-size: 12px;
     font-weight: 650;
@@ -828,7 +896,7 @@ h3 {
         flex-wrap: wrap;
     }
 
-    .dish-edit-row label {
+    .dish-edit-row label:not(.toggle-switch) {
         min-width: 100%;
     }
 }
