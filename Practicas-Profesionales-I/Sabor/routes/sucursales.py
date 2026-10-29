@@ -1,3 +1,4 @@
+from utils.decorators import login_required
 from flask import Blueprint, render_template, request, jsonify
 from models.models import Sucursal
 from models import models
@@ -9,6 +10,7 @@ from datetime import time
 sucursales_bp = Blueprint('sucursales', __name__)
 
 @sucursales_bp.route("/", methods=["GET"])
+@login_required
 def index():
     with SessionLocal() as session:
         sucursales = session.scalars(select(models.Sucursal)).all()

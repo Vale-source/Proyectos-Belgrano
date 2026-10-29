@@ -106,3 +106,11 @@ class Sucursal_horario(Base):
 
     id_sucursal: Mapped[int] = mapped_column(ForeignKey("sucursal.id", ondelete="RESTRICT"))
     id_horario: Mapped[int] = mapped_column(ForeignKey("horario.id", ondelete="RESTRICT"))
+
+class Usuario(Base):
+    __tablename__ = "usuario"
+    __table_args__ = (
+        UniqueConstraint('nick', name='uq_usuario_nick'),
+    )
+    nick: Mapped[str] = mapped_column(String(50), nullable=False)
+    pwd_hash: Mapped[str] = mapped_column(String(255), nullable=False)
