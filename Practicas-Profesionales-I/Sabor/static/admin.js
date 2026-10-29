@@ -1,3 +1,23 @@
+// Interceptor global de fetch para inyectar automáticamente el token CSRF
+const originalFetch = window.fetch;
+window.fetch = async function (resource, options = {}) {
+    const opts = { ...options };
+    const method = (opts.method || 'GET').toUpperCase();
+
+    if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method)) {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+        if (csrfToken) {
+            const headers = new Headers(opts.headers || {});
+            if (!headers.has('X-CSRFToken')) {
+                headers.set('X-CSRFToken', csrfToken);
+            }
+            opts.headers = headers;
+        }
+    }
+
+    return originalFetch(resource, opts);
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Estado de la aplicación
     const state = {
@@ -55,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (metricDishes) metricDishes.textContent = totalD;
     };
 
-    // --- Modal Detalle de Sucursal ---
+    // Modal Detalle de Sucursal
     const fetchBranchDetails = async (branchId) => {
         try {
             const res = await fetch(`/${branchId}`);
@@ -154,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.activeBranchId = null;
     };
 
-    // --- Modal Trabajador (Crear / Editar con PUT) ---
+    // Modal Trabajador (Crear / Editar con PUT)
     const openWorkerModal = async (workerId = null) => {
         const titleEl = document.getElementById('worker-modal-title');
         const submitBtn = document.getElementById('worker-submit-btn');
@@ -227,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Modal Plato (Crear / Editar con PUT) ---
+    // Modal Plato (Crear / Editar con PUT)
     const openDishModal = async (dishId = null) => {
         const titleEl = document.getElementById('dish-modal-title');
         const submitBtn = document.getElementById('dish-submit-btn');
@@ -300,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Modal Agregar Sucursal ---
+    // Modal Agregar Sucursal
     const openAddBranchModal = () => {
         if (addBranchForm) addBranchForm.reset();
         if (addBranchModal) addBranchModal.showModal();
@@ -344,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Toggle activo/inactivo vía change en checkboxes ---
+    // Toggle activo/inactivo vía change en checkboxes
     document.addEventListener('change', async (e) => {
         const toggle = e.target;
         if (!toggle.matches('[data-action^="toggle-"]')) return;

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Panel de administración de Sabor">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Administración · Sabor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
     <script defer src="{{ url_for('static', filename='admin.js') }}"></script>
@@ -19,13 +20,14 @@
                     <p class="sidebar-label">Administración</p>
                     <nav class="sidebar-nav">
                         <a class="sidebar-link is-active" href="/">Sucursales</a>
+                        <a class="sidebar-link" href="{{ url_for('auth.signup_form') }}">+ Registrar Admin</a>
                     </nav>
                 </div>
                 <div class="sidebar-footer">
-                    <span class="owner-avatar" aria-hidden="true">S</span>
+                    <span class="owner-avatar" aria-hidden="true">{{ (session.get('usuario') or 'A')[0]|upper }}</span>
                     <div>
-                        <strong>Administrador</strong>
-                        <small>Gestión Sabor</small>
+                        <strong>{{ session.get('usuario', 'Administrador') }}</strong>
+                        <small><a href="{{ url_for('auth.cerrar_sesion') }}" style="color:var(--text-muted, #888); text-decoration:underline;">Cerrar sesión</a></small>
                     </div>
                 </div>
             </aside>
