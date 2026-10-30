@@ -6,7 +6,6 @@
 (() => {
   'use strict';
 
-  // Todavía no hay servidor, así que las reseñas se guardan en el navegador (localStorage).
   const CLAVE_RESENAS = 'sabor_resenas';
   const EMAIL_GMAIL = /^[a-z0-9._%+-]+@gmail\.com$/i;
 
@@ -27,13 +26,10 @@
   const insigniaVerificada = document.getElementById('badge-verificada');
   const avisoReintentar = document.getElementById('camara-reintentar');
 
-  // true solo si la calificación actual la puso la cámara (y nadie la cambió después)
   let verificadaConCamara = false;
 
   /* ---------- Lista de platos ---------- */
 
-  // El <select> se arma con los platos de los botones "Reseñar" de la página,
-  // así que si se agrega un plato nuevo al catálogo aparece solo acá.
   const platos = [...new Set([...document.querySelectorAll('.btn-resenar')].map((b) => b.dataset.plato))];
   selectPlato.replaceChildren(...platos.map((plato) => new Option(plato, plato)));
 
@@ -56,15 +52,12 @@
     boton.addEventListener('click', () => modal.close());
   });
 
-  // Clic en el fondo oscuro cierra. Se exige que el clic también haya empezado ahí:
-  // si no, al seleccionar texto del comentario y soltar el mouse afuera se cerraría sola.
   let clicEmpezoEnFondo = false;
   modal.addEventListener('mousedown', (e) => { clicEmpezoEnFondo = e.target === modal; });
   modal.addEventListener('click', (e) => {
     if (e.target === modal && clicEmpezoEnFondo) modal.close();
   });
 
-  // "close" salta con el botón ×, Cancelar, la tecla Esc o el clic en el fondo
   modal.addEventListener('close', () => document.body.classList.remove('modal-abierto'));
 
   function reiniciar() {
@@ -93,8 +86,7 @@
     avisoReintentar.hidden = !valor;
   }
 
-  // "change" solo salta cuando la persona toca las estrellas (no cuando las marca el código),
-  // así que si las cambia a mano la reseña deja de figurar como verificada con cámara.
+
   estrellas.forEach((radio) => {
     radio.addEventListener('change', () => {
       marcarVerificada(false);
@@ -102,7 +94,6 @@
     });
   });
 
-  // js/camara-dedos.js avisa con este evento cuando detectó un pulgar arriba/abajo
   modal.addEventListener('camara:calificacion', (e) => {
     const radio = form.querySelector(`input[name="calif_general"][value="${e.detail.estrellas}"]`);
     if (!radio) return;
@@ -121,7 +112,6 @@
       return { campo: inputEmail, mensaje: 'Ingresá un Gmail válido, por ejemplo tunombre@gmail.com.' };
     }
     if (!form.querySelector('input[name="calif_general"]:checked')) {
-      // Los radios están ocultos pero se pueden enfocar; se enfoca el de 1 estrella (la primera que se ve)
       return {
         campo: estrellas[estrellas.length - 1],
         mensaje: 'Elegí una calificación con las estrellas o con la cámara.'
@@ -153,8 +143,6 @@
 
   /* ---------- Envío ---------- */
 
-  // Acá se reemplazaría por un fetch() al servidor cuando exista.
-  // La espera de 600 ms simula el viaje de ida y vuelta.
   function guardarResena(resena) {
     return new Promise((resolver, rechazar) => {
       setTimeout(() => {
