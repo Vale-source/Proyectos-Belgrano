@@ -1,0 +1,1158 @@
+/* Variables de color y base */
+/* Dado que la pagina se reutilizan muchos elementos, declaro variables para mas comodidad */
+:root {
+    --background: #fbf9f4;
+    --foreground: #2b2620;
+    --card: #ffffff;
+    --primary: #b5623a;
+    --primary-foreground: #fbf9f4;
+    --secondary: #f2efe7;
+    --muted-foreground: #7c746a;
+    --accent: #e8e2d5;
+    --accent-foreground: #3a342c;
+    --border: #e4ded2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Contenedor central reutilizable */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.brand {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.brand span,
+.brand .dot {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-left: 10px;
+}
+
+/* Hamburguesa – oculta en desktop */
+.nav-toggle {
+    display: none;
+}
+
+.hamburger {
+    margin-right: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--foreground);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-links a {
+    color: var(--muted-foreground);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--foreground);
+}
+
+.nav-links a.active {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ===== Hero ===== */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 4rem 0;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.eyebrow {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--primary);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 1rem 0 1.5rem;
+}
+
+.hero p {
+    font-size: 1.15rem;
+    color: var(--muted-foreground);
+    max-width: 32rem;
+    margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-media {
+    flex: 1;
+}
+
+.hero-media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 1rem;
+}
+
+.menu-card {
+  padding: 1rem 0;
+  margin: 1rem;
+}
+
+.menu-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.menu-card__title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.menu-card__price {
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+.menu-card__text {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+.menu-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--foreground);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary);
+}
+
+/* Franja de estadísticas */
+.stats {
+    background-color: var(--secondary);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.stats ul {
+    display: flex;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.stats li {
+    flex: 1;
+}
+
+.stats strong {
+    display: block;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--foreground);
+}
+
+.stats span {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+}
+
+/* Sección de platos */
+.dishes {
+    padding: 4rem 0;
+}
+
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.section-head h2 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.25rem;
+}
+
+.section-head p {
+    color: var(--muted-foreground);
+}
+
+.see-all {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.see-all:hover {
+    text-decoration: underline;
+}
+
+/* Grilla de tarjetas */
+.dish-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.dish-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+.dish-card h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 0.75rem;
+}
+
+.dish-card .price {
+    color: var(--primary);
+    font-weight: 600;
+    float: right;
+    margin-top: 0.75rem;
+}
+
+.dish-card .desc {
+    font-size: 0.9rem;
+    color: var(--muted-foreground);
+    margin: 0.25rem 0 0.75rem;
+}
+
+/* Badges de sucursal */
+.branches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.branches li {
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--secondary);
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+}
+
+.footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 3rem 0 1.5rem;
+}
+
+.footer-about {
+    flex: 2;
+    min-width: 240px;
+}
+
+.footer-about .brand {
+    font-size: 1.5rem;
+}
+
+.footer-about p {
+    color: var(--muted-foreground);
+    max-width: 26rem;
+    margin-top: 0.75rem;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 150px;
+}
+
+.footer-col h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted-foreground);
+    margin-bottom: 1rem;
+}
+
+.footer-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-col a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    font-size: 0.85rem;
+    color: var(--muted-foreground);
+}
+
+/* ==== Responsive ==== */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2.5rem 0;
+    }
+
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2.25rem;
+    }
+
+    .dish-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+    .navbar nav {
+        flex-wrap: wrap;
+        position: relative;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        padding: 0.75rem 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 0.6rem 0;
+    }
+
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Animación de la X al abrir */
+    .nav-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .stats ul {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .dish-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
+
+/* ===== Página Sucursales ===== */
+
+/* El main ocupa el alto sobrante y centra el contenido,
+   así no queda un hueco enorme antes del footer en pantallas altas */
+.sucursales-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.titulo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.titulo h1 {
+    font-size: 2.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0.5rem 0;
+}
+
+.titulo p {
+    color: var(--muted-foreground);
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+/* 3 columnas iguales = simetría */
+.contenedor-sucursales {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.sucursal {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 1.25rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.sucursal h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.turno {
+    align-self: center;
+    margin: 0.5rem 0 1rem;
+    padding: 0.25rem 0.8rem;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.datos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+}
+
+.datos i {
+    color: var(--accent-foreground);
+    margin-right: 0.35rem;
+}
+
+/* margin-top: auto alinea los mapas abajo aunque el texto ocupe distinto alto */
+.sucursal iframe {
+    width: 100%;
+    height: 260px;
+    margin-top: auto;
+    border: 0;
+    border-radius: 0.75rem;
+}
+
+/* Cartel "Abierto ahora" / "Cerrado ahora" (lo completa js/sucursales.js) */
+.estado {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Si el JS no corriera, no queda una píldora vacía */
+.estado:empty {
+    display: none;
+}
+
+.estado::before {
+    content: "";
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.estado.abierto {
+    background-color: #e3f1e4;
+    color: #2e6b34;
+}
+
+.estado.cerrado {
+    background-color: #f6e1df;
+    color: #a03a32;
+}
+
+/* Tablet y móvil: una sola columna centrada */
+@media (max-width: 900px) {
+    .contenedor-sucursales {
+        grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .titulo h1 {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    a {
+        padding-left: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .sucursales-page {
+        padding: 2rem 0;
+    }
+
+    .titulo {
+        margin-bottom: 1.75rem;
+    }
+
+    .sucursal iframe {
+        height: 220px;
+    }
+}
+
+/* ===== Reseñas (catalogo.html) ===== */
+
+/* Las tarjetas del menú son una columna: la info crece y el botón queda siempre abajo,
+   alineado entre tarjetas aunque cambie la cantidad de sucursales o de texto */
+.dish-grid > li {
+    display: flex;
+}
+
+.dish-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dish-card__info {
+    flex: 1;
+}
+
+.btn-resenar {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-resenar:hover {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+}
+
+.btn-resenar:focus-visible,
+.modal__close:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Ventana modal */
+.modal {
+    /* El reset global (* { margin: 0 }) anula el centrado automático del <dialog> */
+    margin: auto;
+    width: min(560px, calc(100% - 2rem));
+    max-height: calc(100% - 2rem);
+    overflow-y: auto;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background-color: var(--card);
+    color: var(--foreground);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.modal::backdrop {
+    background-color: rgba(43, 38, 32, 0.5);
+}
+
+body.modal-abierto {
+    overflow: hidden;
+}
+
+.modal [hidden] {
+    display: none;
+}
+
+.modal__form,
+.modal__gracias {
+    padding: 1.5rem;
+}
+
+.modal__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.modal__head h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-top: 0.25rem;
+}
+
+.modal__close {
+    flex-shrink: 0;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: var(--foreground);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal__close:hover {
+    background-color: var(--accent);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.campos-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.campo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.opcional {
+    font-weight: 400;
+    color: var(--muted-foreground);
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background-color: #fff;
+    color: var(--foreground);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.campo textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+.campo input:focus-visible,
+.campo select:focus-visible,
+.campo textarea:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+    border-color: var(--primary);
+}
+
+.contador {
+    align-self: flex-end;
+    font-size: 0.8rem;
+    color: var(--muted-foreground);
+}
+
+/* Calificación con estrellas (radios ocultos + etiquetas ★) */
+.calificacion {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1rem;
+}
+
+.rating {
+    border: none;
+    min-width: 0;
+}
+
+.rating legend {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+}
+
+/* row-reverse: se escribe 5→1 en el HTML y se ve 1→5, así "~" pinta las estrellas anteriores */
+.stars {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.stars input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.stars label {
+    padding: 0 0.05rem;
+    font-size: 2.2rem;
+    line-height: 1.2;
+    color: var(--border);
+    cursor: pointer;
+    transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.stars input:checked ~ label {
+    color: #e0a82e;
+}
+
+/* El efecto hover solo en dispositivos con mouse: en el celular el "hover" queda pegado después de tocar */
+@media (hover: hover) {
+    .stars label:hover,
+    .stars label:hover ~ label {
+        color: #e0a82e;
+    }
+
+    .stars label:hover {
+        transform: scale(1.1);
+    }
+}
+
+.stars input:focus-visible + label {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+    border-radius: 0.25rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.form-error {
+    margin-bottom: 1rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.5rem;
+    background-color: #f6e1df;
+    color: #a03a32;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.modal__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+}
+
+.modal .btn {
+    font-family: inherit;
+}
+
+.modal .btn-primary {
+    border: none;
+}
+
+.modal .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* Pantalla de agradecimiento */
+.modal__gracias {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+}
+
+.modal__check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background-color: #e3f1e4;
+    color: #2e6b34;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.modal__gracias h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.modal__gracias p {
+    color: var(--muted-foreground);
+    margin-bottom: 1.5rem;
+}
+
+.modal__sub {
+    margin-top: 0.4rem;
+    color: var(--muted-foreground);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.ayuda {
+    margin: -0.4rem 0 1rem;
+    font-size: 0.82rem;
+    color: var(--muted-foreground);
+    line-height: 1.4;
+}
+
+.ayuda--email {
+    margin-top: -0.6rem;
+}
+
+.ayuda--camara {
+    margin-top: 0.4rem;
+}
+
+/* Botón "Calificar con la cámara" */
+.btn-camara {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 0.5rem;
+    background-color: transparent;
+    color: var(--primary);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-camara:hover:not(:disabled) {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.btn-camara:focus-visible,
+.camara__cerrar:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.btn-camara:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.verificada {
+    display: inline-block;
+    margin-left: 0.25rem;
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    background-color: #e3f1e4;
+    color: #2e6b34;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Panel de la cámara (el lienzo lo dibuja js/camara-dedos.js) */
+.camara {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background-color: var(--secondary);
+}
+
+.camara__lienzo canvas {
+    display: block;
+    width: 100% !important;
+    height: auto !important;
+    border: 4px solid transparent;
+    border-radius: 0.5rem;
+    background-color: #000;
+    transition: border-color 0.2s ease;
+}
+
+/* Estados de la detección: verde = se está detectando una calificación, ámbar = todavía no */
+.camara {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.camara[data-estado="ok"] {
+    border-color: #2e9e45;
+    background-color: #eaf5ec;
+}
+
+.camara[data-estado="ok"] .camara__lienzo canvas {
+    border-color: #2e9e45;
+}
+
+.camara[data-estado="ok"] .camara__texto {
+    color: #1f7a33;
+}
+
+.camara[data-estado="aviso"] .camara__lienzo canvas {
+    border-color: #d9a21b;
+}
+
+.camara[data-estado="aviso"] .camara__texto {
+    color: #8a6410;
+}
+
+/* El video real se usa solo para detectar; lo que se ve es el lienzo espejado */
+.camara__video {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.camara__texto {
+    min-height: 1.4em;
+    margin: 0.6rem 0 0.4rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.camara__error {
+    margin: 0.6rem 0;
+    padding: 0.6rem 0.9rem;
+    border-radius: 0.5rem;
+    background-color: #f6e1df;
+    color: #a03a32;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.camara .ayuda {
+    margin: 0 0 0.75rem;
+    text-align: center;
+}
+
+.camara__cerrar {
+    display: block;
+    margin: 0 auto;
+    padding: 0.5rem 1.25rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+}
+
+.modal__gracias-extra {
+    margin-top: -0.75rem;
+    color: #2e6b34;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .modal__form {
+        padding: 1.25rem;
+    }
+
+    .campos-2 {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .modal__acciones .btn {
+        flex: 1;
+        padding: 0.75rem 0.5rem;
+        text-align: center;
+        white-space: nowrap;
+    }
+}

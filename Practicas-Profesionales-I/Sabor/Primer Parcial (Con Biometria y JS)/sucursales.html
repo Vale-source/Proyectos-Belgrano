@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Top Sucursales · Sabor</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<script src="js/sucursales.js" defer></script>
+</head>
+
+<body>
+
+	<header class="navbar">
+		<nav class="container">
+			<a href="#" class="brand">Sabor<span class="dot">.</span></a>
+			<input type="checkbox" id="nav-toggle" class="nav-toggle" />
+			<label for="nav-toggle" class="hamburger" aria-label="Abrir menú">
+				<span></span>
+				<span></span>
+				<span></span>
+			</label>
+			<ul class="nav-links">
+				<li><a href="landing.html">Inicio</a></li>
+				<li><a href="sucursales.html" class="active">Sucursales</a></li>
+				<li><a href="catalogo.html">Catálogo</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main class="sucursales-page">
+		<div class="container">
+
+			<div class="titulo">
+				<span class="eyebrow">Nuestras sedes</span>
+				<h1>Top Sucursales</h1>
+				<p>Las sedes más importantes de Sabor, con horarios para cada momento del día.</p>
+			</div>
+
+			<div class="contenedor-sucursales">
+
+			<article class="sucursal" data-apertura="07:00" data-cierre="12:00">
+				<h3>Sede Godoy Cruz</h3>
+				<span class="turno">Turno mañana</span>
+				<ul class="datos">
+					<li><i class="fa-regular fa-clock fa-spin"></i> Lun a Vie de 07:00hs a 12:00hs</li>
+					<li><i class="fa-solid fa-phone"></i> +54 261 123 1234</li>
+				</ul>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.529340582083!2d-68.84041822493522!3d-32.88417016873475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e096ce79e85cf%3A0xef6c21df243b23c3!2sMR.DOG%20CALLE%20GODOY%20CRUZ.!5e0!3m2!1ses-419!2sar!4v1781912967808!5m2!1ses-419!2sar" title="Mapa de la Sede Godoy Cruz" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<p class="estado" role="status"></p>
+			</article>
+
+			<article class="sucursal" data-apertura="14:00" data-cierre="18:00">
+				<h3>Sede Belgrano</h3>
+				<span class="turno">Turno tarde</span>
+				<ul class="datos">
+					<li><i class="fa-regular fa-clock fa-spin"></i> Lun a Vie de 14:00hs a 18:00hs</li>
+					<li><i class="fa-solid fa-phone"></i> +54 261 123 1234</li>
+				</ul>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3350.2729218023155!2d-68.85314872493485!3d-32.89095166907671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e09044dcf0bed%3A0x9ca2fd0b54833355!2sMR.DOG%20CALLE%20BELGRANO!5e0!3m2!1ses-419!2sar!4v1781913003336!5m2!1ses-419!2sar" title="Mapa de la Sede Belgrano" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<p class="estado" role="status"></p>
+			</article>
+
+			<article class="sucursal" data-apertura="20:00" data-cierre="00:00">
+				<h3>Sede Calle Liniers</h3>
+				<span class="turno">Turno noche</span>
+				<ul class="datos">
+					<li><i class="fa-regular fa-clock fa-spin"></i> Lun a Vie de 20:00hs a 00:00hs</li>
+					<li><i class="fa-solid fa-phone"></i> +54 261 123 1234</li>
+				</ul>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6699.786510516636!2d-68.8451618320668!3d-32.900990420910574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x967e096ce5886203%3A0xaf005dd8d158877b!2sMR.DOG%20CALLE%20LINIERS!5e0!3m2!1ses-419!2sar!4v1781913107623!5m2!1ses-419!2sar" title="Mapa de la Sede Calle Liniers" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+				<p class="estado" role="status"></p>
+			</article>
+
+			</div>
+
+		</div>
+	</main>
+
+	<footer class="site-footer">
+		<div class="container">
+			<div class="footer-grid">
+				<div class="footer-about">
+					<span class="brand">Sabor<span class="dot">.</span></span>
+					<p>Cocina de estación con ingredientes frescos. Tres sucursales, un mismo sabor.</p>
+				</div>
+
+				<nav class="footer-col">
+					<h2>Navegación</h2>
+					<ul>
+						<li><a href="#">Inicio</a></li>
+						<li><a href="/sucursales.html">Sucursales</a></li>
+						<li><a href="/catalogo.html">Catálogo</a></li>
+					</ul>
+				</nav>
+
+				<section class="footer-col">
+					<h2>Contacto</h2>
+					<ul>
+						<li>hola@sabor.com</li>
+						<li>+54 11 4321 1234</li>
+					</ul>
+				</section>
+			</div>
+
+			<p class="footer-bottom">© 2026 Sabor. Todos los derechos reservados.</p>
+		</div>
+	</footer>
+
+</body>
+
+</html>
