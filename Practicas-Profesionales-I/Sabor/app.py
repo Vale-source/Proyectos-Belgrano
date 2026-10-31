@@ -33,6 +33,10 @@ def create_app():
         if request.endpoint == "static":
             return None
 
+        # Rutas públicas del cliente (sin necesidad de login)
+        if request.blueprint == "cliente":
+            return None
+
         # Permito que los logins siempre esten disponibles
         if request.endpoint in ("auth.login_form", "auth.login"):
             return None

@@ -2,7 +2,6 @@ services:
   db:
     image: mariadb:latest
     container_name: sabor_mariadb
-    restart: unless-stopped
     env_file:
       - .env
     environment:

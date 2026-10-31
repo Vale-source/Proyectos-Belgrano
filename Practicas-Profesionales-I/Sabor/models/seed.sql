@@ -1,6 +1,7 @@
 -- ==============================================================
 -- DML Inicial de Prueba - Proyecto Sabor
 -- ==============================================================
+USE sabor;
 
 SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE sucursal_plato;
