@@ -5,9 +5,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Top Sucursales · Sabor</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<script src="js/sucursales.js" defer></script>
+	<script src="{{ url_for('static', filename='sucursales.js') }}" defer></script>
 </head>
 
 <body>
@@ -22,9 +22,9 @@
 				<span></span>
 			</label>
 			<ul class="nav-links">
-				<li><a href="landing.html">Inicio</a></li>
-				<li><a href="sucursales.html" class="active">Sucursales</a></li>
-				<li><a href="catalogo.html">Catálogo</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_landing') }}">Inicio</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_sucursales_cliente') }}" class="active">Sucursales</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_catalogo') }}">Catálogo</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -89,9 +89,9 @@
 				<nav class="footer-col">
 					<h2>Navegación</h2>
 					<ul>
-						<li><a href="#">Inicio</a></li>
-						<li><a href="/sucursales.html">Sucursales</a></li>
-						<li><a href="/catalogo.html">Catálogo</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_landing') }}">Inicio</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_sucursales_cliente') }}">Sucursales</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_catalogo') }}">Catálogo</a></li>
 					</ul>
 				</nav>
 

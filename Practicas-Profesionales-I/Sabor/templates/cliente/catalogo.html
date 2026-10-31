@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catalogo</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="js/camara-dedos.js" defer></script>
-  <script src="js/resenas.js" defer></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+  <script src="{{ url_for('static', filename='camara-dedos.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='resenas.js') }}" defer></script>
 </head>
 <body>
   
@@ -20,9 +20,9 @@
 				<span></span>
 			</label>
 			<ul class="nav-links">
-				<li><a href="./landing.html">Inicio</a></li>
-				<li><a href="./sucursales.html">Sucursales</a></li>
-				<li><a href="./catalogo.html" class="active">Catálogo</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_landing') }}">Inicio</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_sucursales_cliente') }}">Sucursales</a></li>
+				<li><a href="{{ url_for('cliente.mostrar_catalogo') }}" class="active">Catálogo</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -37,12 +37,12 @@
                         <p>Descubrí nuestros mejores platos, preparados cada día con productos frescos en nuestras tres sucursales.</p>
 
                         <div class="hero-actions">
-                          <a href="./landing.html" class="btn btn-primary">Inicio</a>
-                          <a href="./sucursales.html" class="btn btn-secondary">Nuestras sucursales</a>
+                          <a href="{{ url_for('cliente.mostrar_landing') }}" class="btn btn-primary">Inicio</a>
+                          <a href="{{ url_for('cliente.mostrar_sucursales_cliente') }}" class="btn btn-secondary">Nuestras sucursales</a>
                         </div>
                       </div>
                       <div class="hero-media">
-                        <img src="./img/plato estrella.jpg" alt="Plato estrella de la casa" width="580" height="450">
+                        <img src="{{ url_for('static', filename='img/plato estrella.jpg') }}" alt="Plato estrella de la casa" width="580" height="450">
                       </div>
 
                       <div class="menu-card">
@@ -74,7 +74,7 @@
 						<h2>Menu</h2>
 						<p>Todos nuestros productos, elegidos por nuestros mejores comensales.</p>
 					</div>
-					<a href="catalogo.html" class="see-all">Ver todos</a>
+					<a href="{{ url_for('cliente.mostrar_catalogo') }}" class="see-all">Ver todos</a>
 				</div>
 
 
@@ -82,7 +82,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/Salmon a la parrilla.png" alt="Salmón a la parrilla" width="415"
+							<img src="{{ url_for('static', filename='img/Salmon a la parrilla.png') }}" alt="Salmón a la parrilla" width="415"
 								height="315" />
 							<h3>Salmón a la parrilla</h3>
 							<span class="price">$18.900</span>
@@ -102,7 +102,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/pastas.jpg" alt="Pasta artesanal" width="415" height="315" />
+							<img src="{{ url_for('static', filename='img/pastas.jpg') }}" alt="Pasta artesanal" width="415" height="315" />
 							<h3>Pasta artesanal</h3>
 							<span class="price">$14.200</span>
 							<p class="desc">Pasta hecha a mano con tomate fresco y albahaca.</p>
@@ -119,7 +119,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/risotto.jpg" alt="Risotto de hongos" width="415" height="315" />
+							<img src="{{ url_for('static', filename='img/risotto.jpg') }}" alt="Risotto de hongos" width="415" height="315" />
 							<h3>Risotto de hongos</h3>
 							<span class="price">$15.600</span>
 							<p class="desc">Risotto cremoso con hongos frescos y parmesano.</p>
@@ -137,7 +137,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/postre-de-chocolate.jpg" alt="Postre de chocolate" width="415"
+							<img src="{{ url_for('static', filename='img/postre-de-chocolate.jpg') }}" alt="Postre de chocolate" width="415"
 								height="315" />
 							<h3>Postre de chocolate</h3>
 							<span class="price">$7.600</span>
@@ -155,7 +155,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/taco_carneasada.jpg" alt="Taco de carne asada" width="415" height="315" />
+							<img src="{{ url_for('static', filename='img/taco_carneasada.jpg') }}" alt="Taco de carne asada" width="415" height="315" />
 							<h3>Taco de carne asada</h3>
 							<span class="price">$6.500</span>
 							<p class="desc">Tortillas suaves con carne asada, cebolla, cilantro y salsa.</p>
@@ -171,7 +171,7 @@
 					<li>
 						<article class="dish-card">
 							<div class="dish-card__info">
-							<img src="./img/pizza-cuatroquesos.webp" alt="Pizza de 4 quesos" width="415" height="315" />
+							<img src="{{ url_for('static', filename='img/pizza-cuatroquesos.webp') }}" alt="Pizza de 4 quesos" width="415" height="315" />
 							<h3>Pizza de 4 quesos</h3>
 							<span class="price">$9.800</span>
 							<p class="desc">Mozzarella, parmesano, provolone y gorgonzola sobre masa artesanal.</p>
@@ -206,9 +206,9 @@
 				<nav class="footer-col">
 					<h2>Navegación</h2>
 					<ul>
-						<li><a href="./landing.html">Inicio</a></li>
-						<li><a href="sucursales.html">Sucursales</a></li>
-						<li><a href="#">Catálogo</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_landing') }}">Inicio</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_sucursales_cliente') }}">Sucursales</a></li>
+						<li><a href="{{ url_for('cliente.mostrar_catalogo') }}">Catálogo</a></li>
 					</ul>
 				</nav>
 
