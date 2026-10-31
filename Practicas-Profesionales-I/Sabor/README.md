@@ -133,7 +133,17 @@ Para poblar las tablas con datos base de prueba (sucursales, puestos, empleados,
 
 ---
 
-### 7. Iniciar Sesión y Operar el Panel
+### 7. Rutas Públicas para Clientes
+
+Las páginas del cliente son públicas y se pueden visitar sin iniciar sesión:
+
+* `http://127.0.0.1:5000/landing`
+* `http://127.0.0.1:5000/sucursales-cliente`
+* `http://127.0.0.1:5000/catalogo`
+
+---
+
+### 8. Iniciar Sesión y Operar el Panel
 
 1. Ingresa a la pantalla de login:
    **`http://127.0.0.1:5000/auth/login`**
@@ -152,29 +162,46 @@ Para poblar las tablas con datos base de prueba (sucursales, puestos, empleados,
 ## Estructura del Proyecto
 
 ```text
-├── alembic/                # Historial y scripts de migraciones de base de datos
+├── alembic/                # Configuración de Alembic para las migraciones
+│   ├── env.py              # Entorno de migraciones
+│   ├── README              # Documentación de Alembic
+│   └── script.py.mako      # Plantilla para generar revisiones
 ├── models/
 │   ├── models.py           # Modelos de SQLAlchemy 2.0 (DeclarativeBase)
 │   └── seed.sql            # Script DML con datos de prueba iniciales
 ├── routes/
 │   ├── __init__.py         # Registro centralizado de Blueprints
 │   ├── auth.py             # Autenticación (login, signup, logout)
+│   ├── cliente.py          # Páginas públicas para clientes
 │   ├── sucursales.py       # Endpoints de sucursales y dashboard principal
 │   ├── empleados.py        # Endpoints para creación y edición de empleados
 │   └── platos.py           # Endpoints para gestión de platos
 ├── static/
-│   ├── admin.css           # Estilos de la aplicación y pantallas de autenticación
-│   └── admin.js            # Lógica AJAX interactiva e interceptor global de CSRF
+│   ├── img/                # Imágenes utilizadas por las páginas
+│   ├── admin.css           # Estilos de administración y autenticación
+│   ├── admin.js            # Interacciones del panel e interceptor de CSRF
+│   ├── camara-dedos.js     # Interacciones de la experiencia de cliente
+│   ├── resenas.js          # Funcionalidad de reseñas
+│   └── sucursales.js       # Funcionalidad de sucursales
 ├── templates/
 │   ├── index.html          # Panel principal de administración
+│   ├── cliente/
+│   │   ├── landing.html    # Página de inicio pública
+│   │   ├── sucursales.html # Información de sucursales para clientes
+│   │   └── catalogo.html   # Catálogo público
 │   └── login/
 │       ├── login.html      # Formulario de inicio de sesión
 │       └── signup.html     # Formulario de alta de administradores
 ├── utils/
 │   ├── extensions.py       # Inicialización de extensiones (CSRF, Limiter, Logging)
 │   └── decorators.py       # Decoradores personalizados (@login_required)
+├── logs/                   # Bitácora de accesos generada por la aplicación
 ├── app.py                  # Fábrica de la aplicación (create_app) y middleware
 ├── database.py             # Motor SQLAlchemy, SessionLocal y Base declarativa
+├── alembic.ini             # Configuración de Alembic
 ├── docker-compose.yml      # Definición del servicio de base de datos MariaDB
-└── requirements.txt        # Dependencias fijadas del proyecto
+├── .env.example            # Ejemplo de variables de entorno
+├── .gitignore              # Archivos excluidos de Git
+├── requirements.txt        # Dependencias del proyecto
+└── README.md               # Documentación del proyecto
 ```
